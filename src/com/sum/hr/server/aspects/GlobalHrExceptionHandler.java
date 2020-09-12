@@ -1,5 +1,6 @@
 package com.sum.hr.server.aspects;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gwt.dev.util.collect.HashSet;
 import com.sum.hr.server.hrexception.HrException;
 import com.sum.hr.server.hrexception.HrValidationException;
 import com.sum.hr.server.response.Errors;
@@ -28,7 +28,7 @@ public class GlobalHrExceptionHandler {
 				.getConstraintViolations();
 		Response<Errors> response = new Response<Errors>();
 		Errors errors = new Errors();
-		Set<Field> erroSet = new HashSet<Field>();
+		Set<Field> erroSet = new HashSet<>();
 		for (ConstraintViolation<Object> constraintViolation : constraintViolations) {
 
 			Field field = new Field();
