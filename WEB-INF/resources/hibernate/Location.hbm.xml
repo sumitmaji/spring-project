@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class
+        name="com.sum.server.data.model.Location"
+        table="LOCATIONS" >
+
+        <meta attribute="class-description" >
+         This class contains the employee detail.         
+        </meta>
+
+        <id
+            name="id"
+            column="LOCATION_ID"
+            type="int" >
+
+            <generator class="sequence" >
+
+                <param name="sequence" >
+					LOCATION_SQ
+                </param>
+            </generator>
+        </id>
+
+        <property
+            name="streetAddress"
+            column="STREET_ADDRESS"
+            length="40"
+            type="string"
+            unique="true" />
+
+        <property
+            name="postalCode"
+            column="POSTAL_CODE"
+            length="12"
+            type="string" />
+
+        <property
+            name="city"
+            column="CITY"
+            length="30"
+            type="string" />
+
+        <property
+            name="stateProvince"
+            column="STATE_PROVINCE"
+            length="25"
+            type="string" />
+
+        <many-to-one
+            name="country"
+            column="COUNTRY_ID"
+            foreign-key="LOC_C_ID_FK" >
+        </many-to-one>
+    </class>
+
+</hibernate-mapping>

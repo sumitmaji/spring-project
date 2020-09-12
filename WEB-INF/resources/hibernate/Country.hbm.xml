@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class
+        name="com.sum.server.data.model.Country"
+        table="COUNTRIES" >
+
+        <meta attribute="class-description" >
+         This class contains the employee detail.         
+        </meta>
+
+        <id
+            name="id"
+            column="COUNTRY_ID"
+            length="2"
+            type="string" >
+        </id>
+
+        <property
+            name="countryName"
+            column="COUNTRY_NAME"
+            length="40"
+            type="string"
+            unique="true" />
+
+        <many-to-one
+            name="region"
+            class="com.sum.server.data.model.Region"
+            column="REGION_ID"
+            foreign-key="COUNTR_REG_FK"
+            cascade="none" >
+        </many-to-one>
+    </class>
+
+</hibernate-mapping>

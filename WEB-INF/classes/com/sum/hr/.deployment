@@ -1,0 +1,5 @@
+#Fri Jun 26 09:48:58 IST 2015
+war.name=Home.war
+compiler.style=OBFUSCATED
+server.path=D\:\\Software\\apache-tomcat-6.0.44-windows-x64\\apache-tomcat-6.0.44\\webapps
+compiler.memory.max=256m

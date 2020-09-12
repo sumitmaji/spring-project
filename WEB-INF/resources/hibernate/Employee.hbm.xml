@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class
+        name="com.sum.server.data.model.Employee"
+        table="EMPLOYEES" >
+
+        <meta attribute="class-description" >
+         This class contains the employee detail.         
+        </meta>
+
+        <id
+            name="id"
+            column="EMPLOYEE_ID"
+            type="int" >
+
+            <generator class="sequence" >
+
+                <param name="sequence" >
+					EMPLOYEE_SQ                
+                </param>
+            </generator>
+        </id>
+
+        <property
+            name="firstName"
+            column="FIRST_NAME"
+            length="20"
+            type="string" />
+
+        <property
+            name="email"
+            column="EMAIL"
+            length="25"
+            type="string"
+            unique="true" />
+
+        <property
+            name="lastName"
+            column="LAST_NAME"
+            length="20"
+            type="string" />
+
+        <property
+            name="hireDate"
+            column="HIRE_DATE"
+            type="date" />
+
+        <property
+            name="salary"
+            column="SALARY"
+            type="int" />
+
+        <property
+            name="commisionPct"
+            column="COMMISSION_PCT"
+            type="float" />
+
+        <many-to-one
+            name="managerId"
+            column="MANAGER_ID"
+            foreign-key="EMP_MANAGER_FK" >
+        </many-to-one>
+
+        <many-to-one
+            name="deptId"
+            column="DEPARTMENT_ID"
+            class="com.sum.server.data.model.Department"
+            foreign-key="EMP_DEPT_FK" >
+        </many-to-one>
+
+        <many-to-one
+            name="job"
+            column="JOB_ID"
+            foreign-key="EMP_JOB_FK"
+            not-null="true" >
+        </many-to-one>
+    </class>
+
+</hibernate-mapping>

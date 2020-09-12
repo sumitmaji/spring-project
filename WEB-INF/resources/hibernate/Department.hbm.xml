@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class
+        name="com.sum.server.data.model.Department"
+        table="DEPARTMENTS" >
+
+        <meta attribute="class-description" >
+         This class contains the employee detail.         
+        </meta>
+
+        <id
+            name="id"
+            column="DEPARTMENT_ID"
+            type="int" >
+
+            <generator class="sequence" >
+
+                <param name="sequence" >
+					DEPARTMENT_SQ                
+                </param>
+            </generator>
+        </id>
+
+        <property
+            name="deptName"
+            column="DEPARTMENT_NAME"
+            length="30"
+            type="string"
+            unique="true" />
+
+        <one-to-one
+            name="managerid"
+            class="com.sum.server.data.model.Employee"
+            foreign-key="DEPT_MGR_FK" >
+        </one-to-one>
+
+        <many-to-one
+            name="locationId"
+            column="LOCATION_ID"
+            foreign-key="DEPT_LOC_FK" >
+        </many-to-one>
+    </class>
+
+</hibernate-mapping>
